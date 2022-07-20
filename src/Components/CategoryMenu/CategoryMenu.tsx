@@ -16,9 +16,10 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({ categories }) => {
 				justifyContent: 'center',
 				flexWrap: 'wrap',
 			}}>
-			{categories.map((category) => {
+			{categories.map((category: string, idx: number) => {
 				return (
 					<Paper
+						key={idx}
 						elevation={3}
 						sx={{ m: '1rem', p: '1rem 2rem', width: '250px' }}>
 						<CategoryTile category={category} />
