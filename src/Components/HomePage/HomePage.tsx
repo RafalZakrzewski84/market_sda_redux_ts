@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
+import Bestsellers from '../Bestsellers/Bestsellers';
 
 function HomePage() {
 	//state hook for categories
@@ -45,6 +46,7 @@ function HomePage() {
 					sx={{ borderBottom: 1, borderColor: 'grey.500' }}>
 					Our bestsellers:
 				</Typography>
+				<Bestsellers />
 			</Container>
 		</>
 	);
