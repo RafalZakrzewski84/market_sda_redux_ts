@@ -21,7 +21,6 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({ categories }) => {
 					<Paper
 						elevation={3}
 						sx={{ m: '1rem', p: '1rem 2rem', width: '250px' }}>
-						{category}
 						<CategoryTile category={category} />
 					</Paper>
 				);
