@@ -24,9 +24,7 @@ function Bestsellers() {
 		axios
 			.get('https://fakestoreapi.com/products?limit=10')
 			.then((response) => {
-				console.log(response);
 				setProducts(response.data);
-				console.log(products);
 			})
 			.catch((e) => {
 				console.log(e);
@@ -42,12 +40,9 @@ function Bestsellers() {
 			{products &&
 				products.map((product: Product, idx: number) => {
 					return (
-						<Paper
-							key={idx}
-							elevation={3}
-							sx={{ m: '1rem', p: '1rem 2rem', width: '250px' }}>
-							<ProductTile product={product} />
-						</Paper>
+						<>
+							<ProductTile key={idx} product={product} />
+						</>
 					);
 				})}
 		</Box>

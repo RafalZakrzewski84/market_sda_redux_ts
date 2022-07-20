@@ -38,15 +38,20 @@ const ProductTile: React.FC<ProductProps> = ({ product }) => {
 	};
 
 	return (
-		<Card onClick={clickHandler} sx={{ maxWidth: 345 }}>
+		<Card sx={{ width: 350, m: '10px' }}>
 			<CardMedia
+				onClick={clickHandler}
 				component="img"
-				alt="green iguana"
+				alt={product.title}
 				height="140"
 				image={product.image}
 			/>
 			<CardContent>
-				<Typography gutterBottom variant="h5" component="div">
+				<Typography
+					onClick={clickHandler}
+					gutterBottom
+					variant="h5"
+					component="div">
 					{product.title}
 				</Typography>
 				{clicked && (
@@ -56,15 +61,20 @@ const ProductTile: React.FC<ProductProps> = ({ product }) => {
 				)}
 			</CardContent>
 			<CardContent>
-				<Typography variant="body2" color="text.secondary">
-					Price: {product.price}
+				<Typography variant="h6" color="text.secondary">
+					Price: {product.price} PLN
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
 					Rate: {product.rating.rate}
 				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Votes: {product.rating.count}
+				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Add To Cart</Button>
+				<Button variant="contained" size="small">
+					Add To Cart
+				</Button>
 			</CardActions>
 		</Card>
 	);
