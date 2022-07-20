@@ -118,7 +118,7 @@ function Navbar() {
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
-						LOGO
+						SDA MARKET
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
