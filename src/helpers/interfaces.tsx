@@ -4,6 +4,6 @@ export interface CategoryMenuProps {
 	categories: string[];
 }
 
-export interface Category {
+export interface CategoryTileProps {
 	category: string;
 }

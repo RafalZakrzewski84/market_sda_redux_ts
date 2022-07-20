@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import axios from 'axios';
-import { Category } from '../../helpers/interfaces';
+import { CategoryTileProps } from '../../helpers/interfaces';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const CategoryTile: React.FC<Category> = ({ category }) => {
+const CategoryTile: React.FC<CategoryTileProps> = ({ category }) => {
 	//state for setting category img
-	const [image, setImage] = React.useState<string[] | undefined>();
+	const [image, setImage] = React.useState<string>();
 
 	//fetching category img from API
 	React.useEffect(() => {
