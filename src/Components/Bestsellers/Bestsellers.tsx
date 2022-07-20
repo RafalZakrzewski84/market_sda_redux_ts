@@ -5,7 +5,7 @@ import ProductTile from '../ProductTile/ProductTile';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
-import { ProductProps } from '../../helpers/interfaces';
+import { Product, ProductProps } from '../../helpers/interfaces';
 
 import axios from 'axios';
 // Stwórz komponent Bestsellers
@@ -17,7 +17,7 @@ import axios from 'axios';
 
 function Bestsellers() {
 	//state hook for products
-	const [products, setProducts] = React.useState<ProductProps[]>();
+	const [products, setProducts] = React.useState<Product[]>();
 
 	//hook useEffect for fetching categories from API using axios
 	React.useEffect(() => {
@@ -40,7 +40,7 @@ function Bestsellers() {
 				flexWrap: 'wrap',
 			}}>
 			{products &&
-				products.map((product: ProductProps, idx: number) => {
+				products.map((product: Product, idx: number) => {
 					return (
 						<Paper
 							key={idx}
