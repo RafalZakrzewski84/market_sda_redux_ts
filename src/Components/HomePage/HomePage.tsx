@@ -35,11 +35,16 @@ function HomePage() {
 						Browse and buy your favorite electronics, jewelry and clothes. All
 						in one place.
 					</Typography>
-					<Typography align="center" variant="h6" gutterBottom component="div">
-						Our bestsellers:
-					</Typography>
 				</Box>
 				{categories && <CategoryMenu categories={categories} />}
+				<Typography
+					align="center"
+					variant="h5"
+					gutterBottom
+					component="div"
+					sx={{ borderBottom: 1, borderColor: 'grey.500' }}>
+					Our bestsellers:
+				</Typography>
 			</Container>
 		</>
 	);
