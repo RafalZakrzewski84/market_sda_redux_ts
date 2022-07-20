@@ -33,7 +33,12 @@ const CategoryTile: React.FC<CategoryTileProps> = ({ category }) => {
 				{/* displaying category title */}
 				{category.toUpperCase()}
 			</Typography>
-			<Box component="img" src={image} sx={{ maxWidth: '60%' }}></Box>
+			<Box
+				component="img"
+				src={image}
+				alt={category}
+				sx={{ maxWidth: '60%' }}
+			/>
 		</>
 	);
 };
