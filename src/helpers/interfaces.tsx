@@ -4,6 +4,10 @@ export interface CategoryMenuProps {
 	categories: string[];
 }
 
+export interface ProductPageProps {
+	category: string;
+}
+
 export interface CategoryTileProps {
 	category: string;
 }
