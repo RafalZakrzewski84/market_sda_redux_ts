@@ -10,7 +10,7 @@ import CategoryTile from '../CategoryTile/CategoryTile';
 
 const CategoryMenu: React.FC<CategoryMenuProps> = ({ categories }) => {
 	console.log('CategoryMenu', categories);
-	const links = [
+	const links: string[] = [
 		'/electronics',
 		'/jewelry',
 		'/mensclothing',
