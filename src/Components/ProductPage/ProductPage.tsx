@@ -25,7 +25,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category }) => {
 				setProducts(res.data);
 			})
 			.catch((e) => console.log(e));
-	}, []);
+	}, [category]);
 
 	return (
 		<>
