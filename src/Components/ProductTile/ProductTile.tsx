@@ -10,21 +10,6 @@ import Typography from '@mui/material/Typography';
 
 import { ProductProps } from '../../helpers/interfaces';
 
-// Stwórz komponent ProductTile, propsy: product
-// stan clicked
-// JSX:
-// Card (onClick przestawia stan clicked na true jeżeli jest false i na odwrót):
-//--------
-// Box img (src=product.image)
-// Typography z product.title
-// Typography z product.category
-// Typography z product.price
-// Typography z product.rating.rate i product.rating.count
-// --------
-// Warunkowo renderowany Card w zależności od stanu clicked {clicked && <Card ...}:
-// Typography z product.description
-// Button Add to cart
-
 const ProductTile: React.FC<ProductProps> = ({ product }) => {
 	const [clicked, setClicked] = React.useState<boolean>(false);
 
