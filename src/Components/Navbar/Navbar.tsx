@@ -15,14 +15,19 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
+import { Link } from 'react-router-dom';
+
 const pages = [
-	'Electronics',
-	'Jewelry',
-	"Men's clothing",
-	"Women's clothing",
-	'Cart',
+	{ name: 'Electronics', link: '/electronics' },
+	{ name: 'Jewelry', link: '/jewelry' },
+	{ name: "Men's clothing", link: '/mensclothing' },
+	{ name: "Women's clothing", link: '/womensclothing' },
+	{ name: 'Cart', link: '/cart' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [
+	{ name: 'Account', link: '/useraccount' },
+	{ name: 'Logout', link: '/' },
+];
 
 function Navbar() {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -96,9 +101,11 @@ function Navbar() {
 								display: { xs: 'block', md: 'none' },
 							}}>
 							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
-								</MenuItem>
+								<Link key={page.link} to={page.link}>
+									<MenuItem key={page.name} onClick={handleCloseNavMenu}>
+										<Typography textAlign="center">{page.name}</Typography>
+									</MenuItem>
+								</Link>
 							))}
 						</Menu>
 					</Box>
@@ -107,7 +114,7 @@ function Navbar() {
 						variant="h5"
 						noWrap
 						component="a"
-						href=""
+						href="/"
 						sx={{
 							mr: 2,
 							display: { xs: 'flex', md: 'none' },
@@ -122,12 +129,14 @@ function Navbar() {
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}>
-								{page}
-							</Button>
+							<Link key={page.link} to={page.link}>
+								<Button
+									key={page.name}
+									onClick={handleCloseNavMenu}
+									sx={{ my: 2, color: 'white', display: 'block' }}>
+									{page.name}
+								</Button>
+							</Link>
 						))}
 					</Box>
 
@@ -153,9 +162,11 @@ function Navbar() {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}>
 							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
+								<Link key={setting.link} to={setting.link}>
+									<MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">{setting.name}</Typography>
+									</MenuItem>
+								</Link>
 							))}
 						</Menu>
 					</Box>
