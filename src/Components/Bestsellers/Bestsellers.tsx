@@ -3,17 +3,10 @@
 import * as React from 'react';
 import ProductTile from '../ProductTile/ProductTile';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 
 import { Product, ProductProps } from '../../helpers/interfaces';
 
 import axios from 'axios';
-// Stwórz komponent Bestsellers
-// stan bestsellers (typ Product[])
-// useEffect i fetch do linku `fakestoreapi.com/products?limit=10`, response do stanu bestsellers
-// JSX:
-// Card
-// w Card pętla z wyświetleniem komponentów ProductTile
 
 function Bestsellers() {
 	//state hook for products
@@ -40,9 +33,9 @@ function Bestsellers() {
 			{products &&
 				products.map((product: Product, idx: number) => {
 					return (
-						<>
-							<ProductTile key={idx} product={product} />
-						</>
+						<div key={idx}>
+							<ProductTile product={product} />
+						</div>
 					);
 				})}
 		</Box>
