@@ -32,10 +32,10 @@ const ProductPage: React.FC<ProductPageProps> = ({ category }) => {
 			<Typography
 				align="center"
 				variant="inherit"
-				component="div"
-				sx={{ mb: '1rem' }}>
+				component="h2"
+				sx={{ my: '1rem' }}>
 				{/* displaying category title */}
-				{category.toUpperCase()}
+				PRODUCTS FROM CATEGORY {category.toUpperCase()}
 			</Typography>
 			<Box
 				sx={{
