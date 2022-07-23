@@ -33,3 +33,9 @@ export interface Product {
 export interface ProductProps {
 	product: Product;
 }
+
+export interface UserRegister {
+	email: string;
+	password: string;
+	repeatedPassword: string;
+}
