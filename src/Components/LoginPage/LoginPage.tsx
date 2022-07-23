@@ -1,9 +1,14 @@
 /** @format */
 
 import React from 'react';
+import Register from '../Register/Register';
 
 function LoginPage() {
-	return <div>LoginPage</div>;
+	return (
+		<>
+			<Register />
+		</>
+	);
 }
 
 export default LoginPage;
