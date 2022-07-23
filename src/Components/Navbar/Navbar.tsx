@@ -16,20 +16,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import firebase from '../../helpers/firebaseConfig';
 
-const pages = [
-	{ name: 'Electronics', link: '/electronics' },
-	{ name: 'Jewelry', link: '/jewelry' },
-	{ name: "Men's clothing", link: '/mensclothing' },
-	{ name: "Women's clothing", link: '/womensclothing' },
-	{ name: 'Cart', link: '/cart' },
-];
-const settings = [
-	{ name: 'Account', link: '/useraccount' },
-	{ name: 'Logout', link: '/' },
-];
+import { NavbarProps } from '../../helpers/interfaces';
 
-function Navbar() {
+const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
+	console.log('isLoggedIn', isLoggedIn);
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
 		null
 	);
@@ -51,6 +44,32 @@ function Navbar() {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
+
+	//changing login links if user logged in
+	let logLink;
+	let btnLink;
+	if (isLoggedIn) {
+		logLink = '/';
+		btnLink = 'LogOut';
+	} else {
+		logLink = '/login';
+		btnLink = 'LogIn';
+	}
+
+	const auth = firebase.auth;
+
+	const pages = [
+		{ name: 'Electronics', link: '/electronics' },
+		{ name: 'Jewelry', link: '/jewelry' },
+		{ name: "Men's clothing", link: '/mensclothing' },
+		{ name: "Women's clothing", link: '/womensclothing' },
+		{ name: 'Cart', link: '/cart' },
+	];
+	const settings = [
+		{ name: 'Account', link: '/useraccount' },
+		{ name: btnLink, link: logLink },
+	];
+
 	return (
 		<AppBar position="static" sx={{ backgroundColor: 'gray' }}>
 			<Container maxWidth="xl">
@@ -148,34 +167,49 @@ function Navbar() {
 								</IconButton>{' '}
 							</Link>
 						</Tooltip>
-						<Menu
-							sx={{ mt: '45px' }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}>
-							{settings.map((setting) => (
-								<Link key={setting.link} to={setting.link}>
-									<MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-										<Typography textAlign="center">{setting.name}</Typography>
-									</MenuItem>
-								</Link>
-							))}
-						</Menu>
+						{isLoggedIn && (
+							<Menu
+								sx={{ mt: '45px' }}
+								id="menu-appbar"
+								anchorEl={anchorElUser}
+								anchorOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								open={Boolean(anchorElUser)}
+								onClose={handleCloseUserMenu}>
+								{isLoggedIn &&
+									settings.map((setting) => (
+										<Link key={setting.link} to={setting.link}>
+											<MenuItem
+												key={setting.name}
+												onClick={handleCloseUserMenu}>
+												<Typography
+													onClick={
+														setting.name === 'LogOut'
+															? () => {
+																	signOut(auth);
+															  }
+															: () => {}
+													}
+													align="center">
+													{setting.name}
+												</Typography>
+											</MenuItem>
+										</Link>
+									))}
+							</Menu>
+						)}
 					</Box>
 				</Toolbar>
 			</Container>
 		</AppBar>
 	);
-}
+};
 
 export default Navbar;
