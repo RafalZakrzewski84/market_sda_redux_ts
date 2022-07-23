@@ -189,6 +189,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
 											<MenuItem
 												key={setting.name}
 												onClick={handleCloseUserMenu}>
+												{/* IMPORTANT */}
+												{/* using this we cane add logic to element rendered in loop */}
 												<Typography
 													onClick={
 														setting.name === 'LogOut'
