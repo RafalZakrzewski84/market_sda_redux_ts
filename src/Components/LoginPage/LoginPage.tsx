@@ -9,12 +9,25 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 
 import LoginFrom from '../LoginForm/LoginForm';
-import Register from '../Register/Register';
 
 function LoginPage() {
 	return (
-		<Container align="center" maxWidth="sm">
+		<Container
+			maxWidth="sm"
+			sx={{
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+				flexDirection: 'column',
+			}}>
 			<Card sx={{ minWidth: 275, my: 4 }}>
+				<Typography
+					align="center"
+					variant="h2"
+					component="h2"
+					sx={{ fontSize: '1.2rem', my: 2 }}>
+					Login to use our page
+				</Typography>
 				<LoginFrom />
 			</Card>
 			<Card sx={{ minWidth: 275, my: 2 }}>

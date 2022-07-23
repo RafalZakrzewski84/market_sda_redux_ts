@@ -6,6 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
 
 import { User } from '../../helpers/interfaces';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -37,11 +38,18 @@ const LoginForm = () => {
 	};
 
 	return (
-		<Box align="center" sx={{ bgcolor: '#fff', my: '2rem' }}>
-			<form onSubmit={handleSubmit(submitHandler)}>
+		<Box
+			sx={{
+				bgcolor: '#fff',
+				my: '2rem',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+			<FormControl onSubmit={handleSubmit(submitHandler)}>
 				<TextField
 					type="email"
-					id="outlined-basic"
+					id="outlined-basic4"
 					placeholder="Email"
 					variant="outlined"
 					sx={{ display: 'block', mb: 1 }}
@@ -49,7 +57,7 @@ const LoginForm = () => {
 				/>
 				<TextField
 					type="password"
-					id="outlined-basic"
+					id="outlined-basic5"
 					placeholder="Password"
 					variant="outlined"
 					sx={{ display: 'block', mb: 1 }}
@@ -58,7 +66,7 @@ const LoginForm = () => {
 				<Button variant="contained" type="submit">
 					Log in
 				</Button>
-			</form>
+			</FormControl>
 		</Box>
 	);
 };

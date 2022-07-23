@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
@@ -53,17 +54,22 @@ function Register() {
 
 	return (
 		<>
-			<Box sx={{ bgcolor: '#fff', my: '2rem' }}>
-				<Typography
-					align="center"
-					gutterBottom
-					variant="h5"
-					component="div"
-					sx={{ my: '1rem' }}>
-					To Sign In Please Fill In The Form
-				</Typography>
+			<Box
+				sx={{
+					bgcolor: '#fff',
+					my: '2rem',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}>
 				<Card sx={{ width: '300px', my: '2rem', mx: 'auto' }}>
-					<form onSubmit={handleSubmit(submitHandler)}>
+					<FormControl onSubmit={handleSubmit(submitHandler)}>
+						<Typography
+							variant="h2"
+							component="h2"
+							sx={{ fontSize: '1.2rem', my: 2 }}>
+							To Sign In Please Fill In The Form
+						</Typography>
 						<TextField
 							id="outlined-basic1"
 							placeholder="Email"
@@ -102,7 +108,7 @@ function Register() {
 							sx={{ m: '1rem', px: '2rem' }}>
 							Register
 						</Button>
-					</form>
+					</FormControl>
 				</Card>
 			</Box>
 		</>

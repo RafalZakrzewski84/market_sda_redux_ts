@@ -30,7 +30,14 @@ function HomePage() {
 	return (
 		<>
 			<CssBaseline />
-			<Container align="center" fixed>
+			<Container
+				fixed
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					flexDirection: 'column',
+				}}>
 				<Box sx={{ maxWidth: '80%', my: '1rem' }}>
 					<Typography align="center" variant="h4" gutterBottom component="div">
 						Browse and buy your favorite electronics, jewelry and clothes. All
