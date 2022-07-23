@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+import * as React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
@@ -11,11 +11,26 @@ import LoginPage from './Components/LoginPage/LoginPage';
 import Register from './Components/Register/Register';
 import UserAccount from './Components/UserAccount/UserAccount';
 
+import { onAuthStateChanged } from 'firebase/auth';
+import firebase from './helpers/firebaseConfig';
+
 function App() {
+	const [isLoggedIn, setLoggedIn] = React.useState<boolean>(false);
+
+	const auth = firebase.auth;
+	//function for checking if user logged in
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			setLoggedIn(true);
+		} else {
+			setLoggedIn(false);
+		}
+	});
+
 	return (
 		<div className="App">
 			<BrowserRouter>
-				<Navbar />
+				<Navbar isLoggedIn={isLoggedIn} />
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route
