@@ -44,3 +44,7 @@ export interface UserRegister {
 	password: string;
 	repeatedPassword: string;
 }
+
+export interface NavbarProps {
+	isLoggedIn: boolean;
+}
