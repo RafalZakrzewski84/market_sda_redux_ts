@@ -1,7 +1,6 @@
 /** @format */
 
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import Box from '@mui/material/Box';
@@ -84,6 +83,7 @@ function Register() {
 								minLength: 6,
 							})}
 						/>
+						{/* need to be resolved */}
 						<p>{errors.password?.message}</p>
 						<TextField
 							id="outlined-basic3"
