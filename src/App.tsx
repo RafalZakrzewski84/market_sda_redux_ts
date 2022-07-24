@@ -10,6 +10,7 @@ import Cart from './Components/Cart/Cart';
 import LoginPage from './Components/LoginPage/LoginPage';
 import Register from './Components/Register/Register';
 import UserAccount from './Components/UserAccount/UserAccount';
+import Favorite from './Components/Favorite/Favorite';
 
 import { onAuthStateChanged } from 'firebase/auth';
 import firebase from './helpers/firebaseConfig';
@@ -53,6 +54,7 @@ function App() {
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/useraccount" element={<UserAccount />} />
+					<Route path="/favorite" element={<Favorite />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

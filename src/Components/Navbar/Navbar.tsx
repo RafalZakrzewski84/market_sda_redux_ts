@@ -64,6 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
 		{ name: "Men's clothing", link: '/mensclothing' },
 		{ name: "Women's clothing", link: '/womensclothing' },
 		{ name: 'Cart', link: '/cart' },
+		{ name: 'Favorite', link: '/favorite' },
 	];
 	const settings = [
 		{ name: 'Account', link: '/useraccount' },
