@@ -12,8 +12,6 @@ import { Product } from '../../helpers/interfaces';
 import { getDatabase, ref, set } from 'firebase/database';
 import firebase from '../../helpers/firebaseConfig';
 
-type UserId = string | null;
-
 function Cart() {
 	//state fro products from API and their total price
 	const [products, setProducts] = React.useState<Product[]>();
@@ -37,16 +35,21 @@ function Cart() {
 			.catch((e) => console.log(e));
 	}, []);
 
-	const auth = firebase.auth;
-	let userId: UserId = auth.currentUser.uid;
-
 	//adding content of cart to db
 	const placeOrder = () => {
-		function writeUserData(userId: string | null, products: Product[]) {
+		//fn to sending products to db in ref() is URL
+		//IMPORTANT add somehow order number
+		function placeOrderInDB(uid: string | null, products: Product[]) {
 			const db = getDatabase();
-			set(ref(db, 'usersOrders/' + userId), products);
+			set(ref(db, 'usersOrders/' + uid), products);
 		}
-		products && writeUserData(userId, products);
+		//getting user id nad callback db writing fn
+		const auth = firebase.auth;
+		let user = auth.currentUser;
+		if (user) {
+			const { uid } = user;
+			products && placeOrderInDB(uid, products);
+		}
 	};
 
 	return (
