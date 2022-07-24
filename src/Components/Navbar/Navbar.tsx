@@ -19,10 +19,20 @@ import { Link } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import firebase from '../../helpers/firebaseConfig';
 
-import { NavbarProps } from '../../helpers/interfaces';
+import { useSelector } from 'react-redux';
 
-const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
-	console.log('isLoggedIn', isLoggedIn);
+interface AuthState {
+	authState: boolean;
+}
+
+interface State {
+	authState: AuthState;
+}
+
+const Navbar = () => {
+	//redux state for auth
+	const authState = useSelector((state: State) => state.authState.authState);
+
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
 		null
 	);
@@ -48,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
 	//changing login links if user logged in
 	let logLink;
 	let btnLink;
-	if (isLoggedIn) {
+	if (authState) {
 		logLink = '/';
 		btnLink = 'LogOut';
 	} else {
@@ -168,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
 								</IconButton>{' '}
 							</Link>
 						</Tooltip>
-						{isLoggedIn && (
+						{authState && (
 							<Menu
 								sx={{ mt: '45px' }}
 								id="menu-appbar"
@@ -184,7 +194,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
 								}}
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}>
-								{isLoggedIn &&
+								{authState &&
 									settings.map((setting) => (
 										<Link key={setting.link} to={setting.link}>
 											<MenuItem
