@@ -63,7 +63,7 @@ function Register() {
 					alignItems: 'center',
 				}}>
 				<Card sx={{ width: '300px', my: '2rem', mx: 'auto' }}>
-					<FormControl onSubmit={handleSubmit(submitHandler)}>
+					<form onSubmit={handleSubmit(submitHandler)}>
 						<Typography
 							variant="h2"
 							component="h2"
@@ -108,7 +108,7 @@ function Register() {
 							sx={{ m: '1rem', px: '2rem' }}>
 							Register
 						</Button>
-					</FormControl>
+					</form>
 				</Card>
 			</Box>
 		</>

@@ -46,26 +46,28 @@ const LoginForm = () => {
 				justifyContent: 'center',
 				alignItems: 'center',
 			}}>
-			<FormControl onSubmit={handleSubmit(submitHandler)}>
-				<TextField
-					type="email"
-					id="outlined-basic4"
-					placeholder="Email"
-					variant="outlined"
-					sx={{ display: 'block', mb: 1 }}
-					{...register('email', { required: true })}
-				/>
-				<TextField
-					type="password"
-					id="outlined-basic5"
-					placeholder="Password"
-					variant="outlined"
-					sx={{ display: 'block', mb: 1 }}
-					{...register('password', { required: true })}
-				/>
-				<Button variant="contained" type="submit">
-					Log in
-				</Button>
+			<FormControl>
+				<form onSubmit={handleSubmit(submitHandler)}>
+					<TextField
+						type="email"
+						id="outlined-basic4"
+						placeholder="Email"
+						variant="outlined"
+						sx={{ display: 'block', mb: 1 }}
+						{...register('email', { required: true })}
+					/>
+					<TextField
+						type="password"
+						id="outlined-basic5"
+						placeholder="Password"
+						variant="outlined"
+						sx={{ display: 'block', mb: 1 }}
+						{...register('password', { required: true })}
+					/>
+					<Button variant="contained" type="submit">
+						Log in
+					</Button>
+				</form>
 			</FormControl>
 		</Box>
 	);
