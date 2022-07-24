@@ -15,23 +15,29 @@ import Favorite from './Components/Favorite/Favorite';
 import { onAuthStateChanged } from 'firebase/auth';
 import firebase from './helpers/firebaseConfig';
 
+import { useDispatch } from 'react-redux';
+import { setAuthState } from './redux/actions/authActions';
+
 function App() {
-	const [isLoggedIn, setLoggedIn] = React.useState<boolean>(false);
+	//calling dispatch
+	const dispatch = useDispatch();
+
+	// const [isLoggedIn, setLoggedIn] = React.useState<boolean>(false);
 
 	const auth = firebase.auth;
 	//function for checking if user logged in
 	onAuthStateChanged(auth, (user) => {
 		if (user) {
-			setLoggedIn(true);
+			dispatch(setAuthState(true));
 		} else {
-			setLoggedIn(false);
+			dispatch(setAuthState(false));
 		}
 	});
 
 	return (
 		<div className="App">
 			<BrowserRouter>
-				<Navbar isLoggedIn={isLoggedIn} />
+				<Navbar />
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route
