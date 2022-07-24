@@ -9,6 +9,11 @@ import axios from 'axios';
 import CartProductTile from '../CartProductTile/CartProductTile';
 import { Product } from '../../helpers/interfaces';
 
+import { getDatabase, ref, set } from 'firebase/database';
+import firebase from '../../helpers/firebaseConfig';
+
+type UserId = string | null;
+
 function Cart() {
 	//state fro products from API and their total price
 	const [products, setProducts] = React.useState<Product[]>();
@@ -32,6 +37,18 @@ function Cart() {
 			.catch((e) => console.log(e));
 	}, []);
 
+	const auth = firebase.auth;
+	let userId: UserId = auth.currentUser.uid;
+
+	//adding content of cart to db
+	const placeOrder = () => {
+		function writeUserData(userId: string | null, products: Product[]) {
+			const db = getDatabase();
+			set(ref(db, 'usersOrders/' + userId), products);
+		}
+		products && writeUserData(userId, products);
+	};
+
 	return (
 		<>
 			<Box
@@ -50,7 +67,11 @@ function Cart() {
 						? 'Your cart is empty'
 						: `Total price of products in your cart: ${totPrice} PLN`}
 				</Typography>
-				<Button variant="contained" size="small" sx={{ m: '1rem', px: '2rem' }}>
+				<Button
+					onClick={placeOrder}
+					variant="contained"
+					size="small"
+					sx={{ m: '1rem', px: '2rem' }}>
 					Order
 				</Button>
 			</Box>
