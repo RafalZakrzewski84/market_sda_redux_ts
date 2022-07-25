@@ -10,7 +10,13 @@ import Typography from '@mui/material/Typography';
 
 import { ProductProps } from '../../helpers/interfaces';
 
+import { useDispatch } from 'react-redux';
+import { setProductCartState } from '../../redux/actions/productCartActions';
+
 const ProductTile: React.FC<ProductProps> = ({ product }) => {
+	//calling dispatch
+	const dispatch = useDispatch();
+
 	const [clicked, setClicked] = React.useState<boolean>(false);
 
 	const clickHandler = () => {
@@ -20,6 +26,12 @@ const ProductTile: React.FC<ProductProps> = ({ product }) => {
 		if (clicked === true) {
 			setClicked(false);
 		}
+		console.log(clicked);
+	};
+
+	const addToCart = () => {
+		dispatch(setProductCartState(product));
+		console.log('Product added');
 	};
 
 	return (
@@ -57,7 +69,7 @@ const ProductTile: React.FC<ProductProps> = ({ product }) => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button variant="contained" size="small">
+				<Button onClick={addToCart} variant="contained" size="small">
 					Add To Cart
 				</Button>
 			</CardActions>
