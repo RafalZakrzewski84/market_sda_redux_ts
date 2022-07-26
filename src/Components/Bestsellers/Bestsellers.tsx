@@ -6,23 +6,35 @@ import Box from '@mui/material/Box';
 
 import { Product, ProductProps } from '../../helpers/interfaces';
 
-import axios from 'axios';
+import { fetchProducts } from '../../redux/actions/productsAction';
+import { useAppDispatch } from '../../redux/store';
+import { ThunkDispatch } from 'redux-thunk';
+import { ProductsInitialState } from '../../helpers/interfaces';
+import { AnyAction } from 'redux';
+import { useSelector } from 'react-redux';
+
+import { ProductsState } from '../../helpers/interfaces';
 
 function Bestsellers() {
-	//state hook for products
-	const [products, setProducts] = React.useState<Product[]>();
+	//global dispatch from state
+	const dispatch = useAppDispatch();
 
-	//hook useEffect for fetching categories from API using axios
 	React.useEffect(() => {
-		axios
-			.get('https://fakestoreapi.com/products?limit=10')
-			.then((response) => {
-				setProducts(response.data);
-			})
-			.catch((e) => {
-				console.log(e);
-			});
+		//calling for changing state using function from productsAction
+		dispatch(
+			fetchProducts(10) as ThunkDispatch<
+				ProductsInitialState,
+				unknown,
+				AnyAction
+			>
+		);
 	}, []);
+
+	//checking state of fetched products
+	const products = useSelector(
+		(state: ProductsState) => state.productsState.fetchedProducts
+	);
+
 	return (
 		<Box
 			sx={{
