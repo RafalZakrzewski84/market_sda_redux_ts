@@ -48,3 +48,13 @@ export interface UserRegister {
 export interface NavbarProps {
 	isLoggedIn: boolean;
 }
+
+export interface ProductsInitialState {
+	fetchedProducts: Product[] | [];
+}
+
+export interface ProductsState {
+	productsState: {
+		fetchedProducts: Product[] | [];
+	};
+}
