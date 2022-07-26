@@ -1,0 +1,20 @@
+import { AnyAction } from "redux";
+import { ActionTypes } from "../constants/actionTypes";
+
+//initial state for fetched products
+const initialState = {
+    fetchedProducts: [],
+};
+
+export const productReducer = (state = initialState, action: AnyAction) => {
+    switch (action.type) {
+        case ActionTypes.FETCH_PRODUCTS:
+            return {
+                //returning of new state using dispatch action in bestsellers component
+                fetchedProducts: action.payload
+            }
+
+        default:
+            return state;
+    }
+}
