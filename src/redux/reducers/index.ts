@@ -8,4 +8,5 @@ export const rootReducer = combineReducers({
     authState: authReducer,
     productsInCartState: productCartReducer,
     productsState: productReducer,
+    categoryImgState: productReducer,
 })
