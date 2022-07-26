@@ -12,10 +12,10 @@ const store = configureStore({
     }
 })
 
-//type in ts for useAppDispatch
+//ts type for useAppDispatch
 export type AppDispatch = typeof store.dispatch;
 
-//global defining 
+//global defining dispatch which will know that we have middleware
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
 export default store;
