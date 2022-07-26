@@ -10,6 +10,7 @@ export interface ProductPageProps {
 
 export interface CategoryTileProps {
 	category: string;
+	image: string;
 }
 
 // interface Product
@@ -51,10 +52,17 @@ export interface NavbarProps {
 
 export interface ProductsInitialState {
 	fetchedProducts: Product[] | [];
+	fetchedImages: string[];
 }
 
 export interface ProductsState {
 	productsState: {
 		fetchedProducts: Product[] | [];
+	};
+}
+
+export interface CategoryImgState {
+	categoryImgState: {
+		fetchedImages: string[];
 	};
 }
