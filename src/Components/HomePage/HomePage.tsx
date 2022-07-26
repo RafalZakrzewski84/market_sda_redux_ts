@@ -20,7 +20,6 @@ function HomePage() {
 			.get('https://fakestoreapi.com/products/categories')
 			.then((response) => {
 				setCategories(response.data);
-				console.log(categories);
 			})
 			.catch((e) => {
 				console.log(e);
