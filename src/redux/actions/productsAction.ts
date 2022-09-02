@@ -11,6 +11,7 @@ export const fetchProducts = (quantity: number): ThunkAction<void, ProductsIniti
     //fetchProducts function will return dispatching function witch data from API
     return async (dispatch) => {
         const response = await axios.get(`https://fakestoreapi.com/products?limit=${quantity}`);
+        console.log(response.data)
         dispatch({
             //this is action.payload in productReducer for fetchedProducts
             type: ActionTypes.FETCH_PRODUCTS,
@@ -26,9 +27,12 @@ export const fetchCategoryImg = (categories: string[]): ThunkAction<void, Produc
         const images = []
         for (let category of categories) {
             const response = await axios.get(`https://fakestoreapi.com/products/category/${category}?limit=1`);
+            // console.log(response.data)
+            // console.log(response.data[0].image)
             images.push(response.data[0].image)
-        }
 
+        }
+        console.log(images)
         dispatch({
             //this is action.payload in productReducer for fetchedImages
             type: ActionTypes.FETCH_CATEGORY_IMAGES,
